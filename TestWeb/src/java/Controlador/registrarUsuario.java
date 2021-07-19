@@ -10,10 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import Modelo.Usuario;
 
-/**
- *
- * @author Acer ES 15
- */
 @WebServlet(name = "registrarUsuario", urlPatterns = {"/registrarUsuario"})
 public class registrarUsuario extends HttpServlet {
 
