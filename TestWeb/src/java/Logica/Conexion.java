@@ -16,7 +16,7 @@ public class Conexion {
             System.out.println("Conexion exitosa con la base de datos dbventas.....................................\n");
             
         } catch (Exception ex) {
-            System.err.println("Error de conexion con la base de datos:" + ex.getMessage());
+            System.err.println("Error de conexion con la base de datos:_____________________________" + ex.getMessage());
         }
     }
 

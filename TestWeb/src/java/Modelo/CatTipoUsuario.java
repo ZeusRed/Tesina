@@ -5,11 +5,15 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Acer ES 15
  */
-public class CatTipoUsuario {
+ 
+public class CatTipoUsuario  implements Serializable{
+   
     private int idcattipoUsuario;
     private String descripcion;
     
