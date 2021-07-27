@@ -38,6 +38,7 @@
 
             </div>
             <div class="col-lg-5">
+                
                 <%@ page import="Controlador.ConsultaCatalogoTipoUsuarios" %>
                 <% String path = request.getContextPath(); %>
              
@@ -45,8 +46,7 @@
                               onclick="location.href ='../Vistas/AccionesCatalogoTipoUsuarios/Nuevo.jsp'">
                         Nuevo
                     </button>
-           
-
+          
             </div>
 
             <br/>
