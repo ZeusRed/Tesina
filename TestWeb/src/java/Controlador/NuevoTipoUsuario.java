@@ -1,6 +1,7 @@
- 
 package Controlador;
 
+import Logica.CatTipoUsuarioManager;
+import Modelo.CatTipoUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -9,40 +10,44 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
- 
-@WebServlet(name = "ConsultaCatalogoTipoUsuarios", urlPatterns = {"/ConsultaCatalogoTipoUsuarios"})
-public class ConsultaCatalogoTipoUsuarios extends HttpServlet {
+/**
+ *
+ * @author Acer ES 15
+ */
+@WebServlet(name = "NuevoTipoUsuario", urlPatterns = {"/NuevoTipoUsuario"})
+public class NuevoTipoUsuario extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-             int valorBoton=Integer.parseInt(request.getParameter("submitCatalogo"));
-           if(valorBoton==1){            //response.sendRedirect(request.getContextPath() + "/Vistas/AccionesCatalogoTipoUsuarios/Nuevo.jsp");
-            response.sendRedirect(request.getContextPath() + "/Vistas/CatalogoTipoUsuarios.jsp");
-           }else{
-               
-           }
-           
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ConsultaCatalogoTipoUsuarios</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ConsultaCatalogoTipoUsuarios at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+            int valorBoton = Integer.parseInt(request.getParameter("submitCatalogo"));
+            
+            String valor = request.getParameter("descripcion");
+            
+            if (valorBoton == 1) {            //response.sendRedirect(request.getContextPath() + "/Vistas/AccionesCatalogoTipoUsuarios/Nuevo.jsp");
+                response.sendRedirect(request.getContextPath() + "/Vistas/CatalogoTipoUsuarios.jsp");
+            } else {
+                if (!valor.isEmpty()) {
+
+                    CatTipoUsuario u = new CatTipoUsuario();
+                    u.setDescripcion(valor);
+                    CatTipoUsuarioManager registrar = new CatTipoUsuarioManager();
+                    int registro = registrar.registrarCatTipoUsuario(u);
+                    
+                    if (registro == 1) {
+                        response.sendRedirect(request.getContextPath() + "/Vistas/CatalogoTipoUsuarios.jsp");
+
+                    } else {
+                        response.sendRedirect(request.getContextPath() + "/Error.jsp");
+
+                    }
+                } else {
+
+                }
+            }
+
         }
     }
 

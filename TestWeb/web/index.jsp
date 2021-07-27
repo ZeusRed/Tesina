@@ -137,7 +137,7 @@
                 </div>
             </div>
         </div>  --%>
-          <a href="Vistas/CatalogoUsuarios.jsp">CatalogoTipoUsuarios</a>
+          <a href="Vistas/CatalogoTipoUsuarios.jsp">CatalogoTipoUsuarios</a>
         <%--    <%@ page import="Controlador.registrarUsuario" %>
              <div class="container">
                  <div class="row" style="background-color: greenyellow">
