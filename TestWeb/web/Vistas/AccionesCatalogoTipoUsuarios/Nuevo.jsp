@@ -29,11 +29,6 @@
                 </div>
 
             </div>
-
-            <br/>
-            <br/>
-            <br/>
-            <br/>
  
             <div class="row col-md-12">
                 <div class="col-md-3">
@@ -48,7 +43,6 @@
                     </button>
                 </div>
             </div>
-
         </form>
     </body>
 </html>

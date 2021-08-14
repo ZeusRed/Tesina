@@ -3,11 +3,14 @@
 <%@page import="java.util.List" %>
 <%@page import="Modelo.CatTipoUsuario" %>
 <%@page import="Logica.CatTipoUsuarioManager" %>
+ <%@page import="Controlador.ConsultaTipoUsuario" %>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
-    <head>
+     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -39,11 +42,11 @@
             </div>
             <div class="col-lg-5">
                 
-                <%@ page import="Controlador.ConsultaCatalogoTipoUsuarios" %>
+         <%@page import="Controlador.ConsultaCatalogoTipoUsuarios"%>
                 <% String path = request.getContextPath(); %>
              
                     <button type="button" class="btn btn-primary" aria-label="Left Align"
-                              onclick="location.href ='../Vistas/AccionesCatalogoTipoUsuarios/Nuevo.jsp'">
+                              onclick="location.href ='../TestWeb/Vistas/AccionesCatalogoTipoUsuarios/Nuevo.jsp'">
                         Nuevo
                     </button>
           
@@ -53,7 +56,7 @@
 
             <br/>
         </div>
-
+   
         <div class="col-lg-7"   >
             <table  id="mytabla" class="table table-striped table-bordered dt-responsive nowrap">
 
@@ -67,9 +70,8 @@
                 </thead>
                 <tbody>
                     <% 
-                        CatTipoUsuarioManager usc= new CatTipoUsuarioManager();
-                        List<CatTipoUsuario> lista= usc.GetListCatTipoUsuario();
-                      for(CatTipoUsuario u: lista){
+                      List<CatTipoUsuario> listaCU=(List<CatTipoUsuario>) request.getAttribute("listCatTipoUsuario");
+                      for(CatTipoUsuario u: listaCU){
                     %>
                     <tr>
                         <td> <%= u.getIdcattipoUsuario()%> </td>
@@ -77,12 +79,12 @@
                         <td>
 
                             <button type="button" class="btn btn-default" aria-label="Left Align"
-                              onclick="location.href ='../Vistas/AccionesCatalogoTipoUsuarios/Editar.jsp?id=<%= u.getIdcattipoUsuario()%>'">
+                              onclick="location.href ='../TestWeb/Vistas/AccionesCatalogoTipoUsuarios/Editar.jsp?id=<%= u.getIdcattipoUsuario()%>'">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             </button>  
                            
                             <button type="button" class="btn btn-default" aria-label="Left Align"
-                               onclick="location.href ='../Vistas/AccionesCatalogoTipoUsuarios/Eliminar.jsp?id=<%= u.getIdcattipoUsuario()%>'">
+                               onclick="location.href ='../TestWeb/Vistas/AccionesCatalogoTipoUsuarios/Eliminar.jsp?id=<%= u.getIdcattipoUsuario()%>'">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
 

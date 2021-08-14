@@ -1,6 +1,6 @@
  
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="Controlador.ConsultaCatalogoTipoUsuarios" %>
+<%@page import="Controlador.ConsultaCatalogoTipoUsuarios" %>
 <%@page import="Modelo.CatTipoUsuario" %>
 <%@page import="Logica.CatTipoUsuarioManager" %>
 <!DOCTYPE html>
@@ -29,6 +29,7 @@
                 CatTipoUsuarioManager usc= new CatTipoUsuarioManager();
                CatTipoUsuario e= usc.GetCatTipoUsuario(id);
         %>
+        
         <form method="post" action="<%= path %>/EditarTipoUsuario">
             <div class="row col-md-12">
                 <div class="col-md-4" > 

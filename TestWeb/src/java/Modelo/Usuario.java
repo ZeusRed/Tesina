@@ -10,7 +10,7 @@ package Modelo;
  * @author Acer ES 15
  */
 public class Usuario {
-    private int idUsuario,idcattipousuario;
+    private int idUsuario;  //,idcattipousuario;
     private String Nombre,ApPaterno,ApMaterno,correo,password;
     
     public Usuario(){
@@ -26,13 +26,13 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public int getIdcattipousuario() {
+ /*    public int getIdcattipousuario() {
         return idcattipousuario;
     }
 
     public void setIdcattipousuario(int idcattipousuario) {
         this.idcattipousuario = idcattipousuario;
-    }
+    }*/
 
     public String getNombre() {
         return Nombre;

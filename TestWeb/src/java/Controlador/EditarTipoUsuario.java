@@ -49,8 +49,10 @@ public class EditarTipoUsuario extends HttpServlet {
                     CatTipoUsuario u = new CatTipoUsuario();
                     u.setIdcattipoUsuario(id);
                     u.setDescripcion(valor);
+                    
                     CatTipoUsuarioManager registrar = new CatTipoUsuarioManager();
                     int registro = registrar.actualizarCatTipoUsuario(u);
+                    
                     if (registro == 1) {
                         response.sendRedirect(request.getContextPath() + "/Vistas/CatalogoTipoUsuarios.jsp");
 

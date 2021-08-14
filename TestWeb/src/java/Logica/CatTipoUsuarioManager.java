@@ -13,10 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Acer ES 15
- */
+ 
 public class CatTipoUsuarioManager extends Conexion {
 
     public List<CatTipoUsuario> GetListCatTipoUsuario() {
@@ -36,7 +33,7 @@ public class CatTipoUsuarioManager extends Conexion {
             System.out.println("Registros obtenidos correctamente");
             con.close();
 
-        } catch (Exception E) {
+        } catch (SQLException E) {
             System.out.println("Error:" + E.getMessage());
             return null;
         }
@@ -76,6 +73,7 @@ public class CatTipoUsuarioManager extends Conexion {
             Connection con = getConection();
             String query = "insert into cattipousuario(Descripcion)values(?)";
             PreparedStatement st = con.prepareStatement(query);
+
             st.setString(1, ctu.getDescripcion());
             estatus = st.executeUpdate();
             con.close();

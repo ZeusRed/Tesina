@@ -1,6 +1,8 @@
  
 package Controlador;
 
+import Logica.UsuarioManager;
+import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -8,33 +10,34 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
- 
-@WebServlet(name = "ConsultaCatalogoTipoUsuarios", urlPatterns = {"/ConsultaCatalogoTipoUsuarios"})
-public class ConsultaCatalogoTipoUsuarios extends HttpServlet {
+/**
+ *
+ * @author Acer ES 15
+ */
+@WebServlet(name = "EliminarUsuario", urlPatterns = {"/EliminarUsuario"})
+public class EliminarUsuario extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-             int valorBoton=Integer.parseInt(request.getParameter("submitCatalogo"));
-           if(valorBoton==1){            //response.sendRedirect(request.getContextPath() + "/Vistas/AccionesCatalogoTipoUsuarios/Nuevo.jsp");
-            response.sendRedirect(request.getContextPath() + "/Vistas/CatalogoTipoUsuarios.jsp");
-           }else{
-               
-           }
-           
-         
+
+            int valorSubmit = Integer.parseInt(request.getParameter("eliminar"));
+            UsuarioManager manager = new UsuarioManager();
+            int estatus = manager.EliminaUsuario(valorSubmit);
+            if (estatus == 1) {
+                UsuarioManager mn3 = new UsuarioManager();
+                List<Usuario> usuarios = mn3.GetUsuarios();
+                request.setAttribute("listaUsuariosRender", usuarios);
+                request.getRequestDispatcher("usuarios.jsp").forward(request, response);
+            } else {
+                String error = "Error no se pudo eliminar el registro ";
+                request.setAttribute("error", error);
+                request.getRequestDispatcher("/Vistas/AccionesUsuario/NuevoUsuario.jsp").forward(request, response);
+            }
         }
     }
 

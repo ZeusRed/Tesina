@@ -2,6 +2,9 @@ package Logica;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Conexion {
 
@@ -12,7 +15,8 @@ public class Conexion {
     private static String conexion="jdbc:mysql://localhost:3306/"+db;
     public Conexion() {
 
-        try {
+        try { 
+            
             Class.forName("com.mysql.jdbc.Driver");
 
             //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbventas", "root", "Rmejia2021");
@@ -25,6 +29,7 @@ public class Conexion {
     }
 
     public Connection getConection() {
+      
         return con;
     }
 }

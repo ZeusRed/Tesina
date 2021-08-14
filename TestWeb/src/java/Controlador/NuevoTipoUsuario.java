@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -37,7 +38,12 @@ public class NuevoTipoUsuario extends HttpServlet {
                     int registro = registrar.registrarCatTipoUsuario(u);
                     
                     if (registro == 1) {
-                        response.sendRedirect(request.getContextPath() + "/Vistas/CatalogoTipoUsuarios.jsp");
+                        //response.sendRedirect(request.getContextPath() + "/Vistas/CatalogoTipoUsuarios.jsp");
+                         CatTipoUsuarioManager usc = new CatTipoUsuarioManager();
+            List<CatTipoUsuario> lista = usc.GetListCatTipoUsuario();
+            
+         request.setAttribute("listCatTipoUsuario", lista);
+         request.getRequestDispatcher("/Vistas/CatalogoTipoUsuarios.jsp").forward(request, response);
 
                     } else {
                         response.sendRedirect(request.getContextPath() + "/Error.jsp");
